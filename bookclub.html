@@ -3,13 +3,29 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Museum Exhibit</title>
-	<link rel="stylesheet" type="text/css" href="reset.css">
+	<title>Book Club</title>
+	<link rel="stylesheet" type="text/css" href="../final%20designs/reset.css">
 	<link rel="stylesheet" type="text/css" href="bookclub.css">
 </head>
 
 <body>
-	
+	<h1> Book Club </h1>
+	<!-- Div for search by and search bar-->
+	<div>
+	<h2> Search for a book by...</h2>
+	<!-- Div for the search bar -->
+	  <div>
+	    <p> Author <input type= "text" id="Author" placeholder="Author"> </p>
+		<p>or</p> 
+		<p>Title <input type="text" id="Title" placeholder="Title"></p>
+        <p>or</p>
+	    <p>ISBN <input type="text" id="ISBN" placeholder="ISBN"></p> 
+	  </div>
+	</div>
+	<!-- div for Search -->
+	<div>
+	  <button onclick="newRequest()"> Search </p>
+	</div>
 	<script src="bookclub.js"></script>
 </body>
 
