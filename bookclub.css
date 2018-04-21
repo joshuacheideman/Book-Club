@@ -12,16 +12,16 @@ h2 {
 }
 
 input {
-    display:flex;
-    flex-direction:column;
-	flex-basis:100%;
-    width: 200px;
-    height: 40px;
+   display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    height: 40%;
+    width: 90%;
     border-style: solid;
     border-color: #34A852;
     border-radius: 10px;
-    padding-left: 10px;
-    font-size: 18px;
+    padding-left: 5%;
+    font-size: 90%;
     color: #EDEDED;
 }
 ::-webkit-input-placeholder {
@@ -81,25 +81,28 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding-left: 80px;
+    padding-left: 10%;
 }
 
 #search {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    padding-left: 10%;
 }
 
 #maintitle {
-   margin-left: 20px;
+    margin-left: 2.5%;
     font-size: 30px;
-    margin-top: 20px;
+    margin-top: 2.5%;
 }
 
 #subtitle {
-    display:flex;
-    margin-top:70px;
-	margin-left: 80px;
-    font-size: 30px;
-    margin-bottom: 5px;
+    display: flex;
+    margin-top: 8.50%;
+    margin-left: 10%;
+    font-size: 170%;
+    margin-bottom: 0.625%;
+}
+}
 }
