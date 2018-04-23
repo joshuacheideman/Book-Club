@@ -55,7 +55,6 @@ function fancyJoin(a,b) {
 
 
 /* The callback function, which gets run when the API returns the result of our query */
-/* Replace with your code! */
 function handleResponse(bookListObj) {
 	var bookList = bookListObj.items;
 
@@ -66,10 +65,30 @@ function handleResponse(bookListObj) {
 	for (i=0; i<bookList.length; i++) {
 		var book = bookList[i];
 		var title = book.volumeInfo.title;
-		var titlePgh = document.createElement("p");
+		var author = book.volumeInfo.authors;
+		var desc = book.volumeInfo.description.split(",");
+		var thumbnail = book.volumeInfo.imageLinks.thumbnail;
+		var tile = document.createElement("div");
+		tile.className = "tile";
+		var titlepar = document.createElement("p");
+		titlepar.textContent = title;
+		titlepar.className = "titlepar";
+		var authorpar = document.createElement("p");
+		authorpar.textContent = author;
+		authorpar.className = "authorpar";
+		var descpar = document.createElement("p");
+		descpar.className = "descpar";
+		descpar.textContent = desc.splice(0,30);
+		var thumbnailimg = document.createElement("img");
+		thumbnailimg.src = thumbnail;
+		thumbnailimg.alt= title;
+		thumbnailimg.className = "thumbnailimg";
 		/* ALWAYS AVOID using the innerHTML property */
-		titlePgh.textContent = title;
-		bookDisplay.append(titlePgh);
+		tile.append(titlepar);
+		tile.append(authorpar);
+		tile.append(descpar);
+		tile.append(thumbnailimg);
+		bookDisplay.append(tile);
 	}	
 }
 
