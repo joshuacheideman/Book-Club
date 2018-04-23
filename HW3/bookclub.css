@@ -10,6 +10,13 @@ h1 {
 h2 {
     font-weight: 300;
 }
+header {
+    height: 100px;
+    background-color: red;
+}
+main {
+    background-color: #EDEDED;
+}
 
 input {
    display: flex;
@@ -22,13 +29,12 @@ input {
     border-radius: 10px;
     padding-left: 5%;
     font-size: 90%;
-    color: #EDEDED;
 }
 ::-webkit-input-placeholder {
-    opacity:0.5;
+    color: lightgrey;
 }
 ::-moz-placeholder{
-    opacity:0.5;
+    color: lightgrey;
 }
 
 .input_title {
@@ -70,6 +76,10 @@ input {
     padding-top: 40px;
     padding-left: 10px;
     padding-right:10px;
+}
+.tile {
+    border-style: solid;
+    border
 }
 
 .search_title {
