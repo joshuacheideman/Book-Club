@@ -66,7 +66,8 @@ function handleResponse(bookListObj) {
 		var book = bookList[i];
 		var title = book.volumeInfo.title;
 		var author = book.volumeInfo.authors;
-		var desc = book.volumeInfo.description.split(",");
+		var desc = book.volumeInfo.description.split(" ");
+		console.log(desc);
 		var thumbnail = book.volumeInfo.imageLinks.thumbnail;
 		var tile = document.createElement("div");
 		tile.className = "tile";
@@ -78,7 +79,8 @@ function handleResponse(bookListObj) {
 		authorpar.className = "authorpar";
 		var descpar = document.createElement("p");
 		descpar.className = "descpar";
-		descpar.textContent = desc.splice(0,30);
+		
+		descpar.textContent = desc.splice(0,30).join(" ");
 		var thumbnailimg = document.createElement("img");
 		thumbnailimg.src = thumbnail;
 		thumbnailimg.alt= title;
