@@ -118,11 +118,14 @@ function handleResponse(bookListObj) {
 		// Create image
 		// Goes inside tile div
 		var thumbnailimg = document.createElement("img");
-		if (thumbnail == null)
+		if (thumbnail == null) {
 			thumbnailimg.src = "file://null";
-		else
+			thumbnailimg.alt = "no image";
+		}
+		else {
 			thumbnailimg.src = thumbnail;
-		thumbnailimg.alt = title;
+			thumbnailimg.alt = title;
+		}
 		thumbnailimg.className = "thumbnailimg";
 
 		/* ALWAYS AVOID using the innerHTML property */
