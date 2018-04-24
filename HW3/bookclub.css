@@ -102,7 +102,7 @@ input {
 .Xsymbol {
     text-align: right;
 }
-.button_arrow {
+.button_transparent {
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
