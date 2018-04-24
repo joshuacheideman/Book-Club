@@ -32,7 +32,7 @@
 					<input type="text" id="isbn" placeholder="ex 000-0-00-000000-0">
 				</div>
 			</div>
-			<div id="search" >
+			<div id="search">
 				<button class="button" onclick="newRequest()"> Search </p>
 			</div>
 		</div>
@@ -40,7 +40,18 @@
 	</header>
 	<main>
 		<div id="bookDisplay">
+		</div>
+		<div id="overlay_dim">
+			<div id="overlay_main">
+				<p class="arrow_box">&larr;</p>
+				<div id="overlay_tile">
+				</div>
+				<p class="arrow_box">&rarr;</p>
 			</div>
+			<div class="button" id="keep_button">
+				<p>Keep</p>
+			</div>
+		</div>
 	</main>
 	<script src="bookclub.js"></script>
 	<script id="dummy"></script>
