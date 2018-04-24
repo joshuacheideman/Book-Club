@@ -65,7 +65,9 @@ function handleResponse(bookListObj) {
 		var book = bookList[i];
 		var title = book.volumeInfo.title;
 		var author = book.volumeInfo.authors;
-		var desc = book.volumeInfo.description.split(" ");
+		var desc = book.volumeInfo.description;
+		if(desc !=null)
+			desc_list = desc.split(" ");
 		var thumbnail = book.volumeInfo.imageLinks.thumbnail;
 		var tile = document.createElement("div");
 		tile.className = "tile";
@@ -84,25 +86,29 @@ function handleResponse(bookListObj) {
 		var Xsymbol = document.createElement("p");
 		Xsymbol.textContent = '\u24E7';
 		Xsymbol.className = "Xsymbol";
-		descpar.textContent = desc.splice(0,30).join(" ");
+		if(desc!=null)
+			descpar.textContent = desc_list.splice(0,30).join(" ");
 		var thumbnailimg = document.createElement("img");
 		thumbnailimg.src = thumbnail;
 		thumbnailimg.alt= title;
+		if(thumbnailimg.src == null)
+			thumbnailimg.alt = "no image";
 		thumbnailimg.className = "thumbnailimg";
 		/* ALWAYS AVOID using the innerHTML property */
 		tile.append(thumbnailimg);
 		tile.append(Xsymbol);
 		tile.append(titlepar);
 		tile.append(authorpar);
-		tile.append(descpar);
+		if(descpar!=null)
+			tile.append(descpar);
 		wordblock.appendChild(Xsymbol);
 		wordblock.appendChild(titlepar);
 		wordblock.appendChild(authorpar);
 		wordblock.appendChild(descpar);
 		tile.append(wordblock);
 		bookDisplay.append(tile);
-		addButtonActions();
 	}	
+	addButtonActions();
 }
 function addOnClick(element,func,param)
 {
