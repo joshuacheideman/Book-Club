@@ -1,4 +1,3 @@
-
 /* Called when the user pushes the "submit" button */
 /* Sends a request to the API using the JSONp protocol */
 function newRequest() {
@@ -53,6 +52,7 @@ function fancyJoin(a,b) {
     else { return a+"+"+b; }
 }
 
+var numtiles=0;
 
 /* The callback function, which gets run when the API returns the result of our query */
 function handleResponse(bookListObj) {
@@ -60,17 +60,17 @@ function handleResponse(bookListObj) {
 
 	/* where to put the data on the Web page */ 
 	var bookDisplay = document.getElementById("bookDisplay");
-
 	/* write each title as a new paragraph */
 	for (i=0; i<bookList.length; i++) {
 		var book = bookList[i];
 		var title = book.volumeInfo.title;
 		var author = book.volumeInfo.authors;
 		var desc = book.volumeInfo.description.split(" ");
-		console.log(desc);
 		var thumbnail = book.volumeInfo.imageLinks.thumbnail;
 		var tile = document.createElement("div");
 		tile.className = "tile";
+		tile.id = "tile"+numtiles;
+		numtiles++;
 		var titlepar = document.createElement("p");
 		titlepar.textContent = title;
 		titlepar.className = "titlepar";
@@ -101,6 +101,37 @@ function handleResponse(bookListObj) {
 		wordblock.appendChild(descpar);
 		tile.append(wordblock);
 		bookDisplay.append(tile);
+		addButtonActions();
 	}	
 }
+function addOnClick(element,func,param)
+{
+	 function noarg(){
+		func(param);
+	}
+	element.onclick = noarg;
+}
 
+function addButtonActions()
+{
+	var tile_list = document.getElementsByClassName("tile");
+	console.log(tile_list);
+	for(let i=0;i<tile_list.length;i++)
+	{
+		var our_tile = tile_list[i];
+		console.log(our_tile);
+		 X_button = our_tile.getElementsByClassName("Xsymbol");
+		console.log(X_button[0]);
+		 tile_ID = our_tile.id;
+		console.log(tile_ID);
+		addOnClick(X_button[0],removeElement,tile_ID);
+	}
+}
+
+function removeElement(tile)
+{
+	console.log("Went into function");
+	tile_div = document.getElementById(tile);
+	var bookDisplay = document.getElementById("bookDisplay");
+	bookDisplay.removeChild(tile_div);
+}
