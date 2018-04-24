@@ -69,7 +69,8 @@ function handleResponse(bookListObj) {
 
 		// Get author(s)
 		var author = book.volumeInfo.authors;
-		var author_string = author.join(', ');
+		if (author != null)
+			var author_string = author.join(', ');
 
 		// Get description
 		var desc = book.volumeInfo.description;
