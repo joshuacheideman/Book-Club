@@ -127,23 +127,18 @@ function addOnClick(element,func,param)
 function addButtonActions()
 {
 	var tile_list = document.getElementsByClassName("tile");
-	console.log(tile_list);
 	for(let i=0;i<tile_list.length;i++)
 	{
 		var our_tile = tile_list[i];
-		console.log(our_tile);
-		 X_button = our_tile.getElementsByClassName("Xsymbol");
-		console.log(X_button[0]);
-		 tile_ID = our_tile.id;
-		console.log(tile_ID);
+		 var X_button = our_tile.getElementsByClassName("Xsymbol");
+		 var tile_ID = our_tile.id;
 		addOnClick(X_button[0],removeElement,tile_ID);
 	}
 }
 
 function removeElement(tile)
 {
-	console.log("Went into function");
-	tile_div = document.getElementById(tile);
+	var tile_div = document.getElementById(tile);
 	var bookDisplay = document.getElementById("bookDisplay");
 	bookDisplay.removeChild(tile_div);
 }
