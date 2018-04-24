@@ -123,11 +123,11 @@ input {
     padding: 10px 10px 20px 10px;
 }
 .top_corner {
-    position:absolute;
+    position: absolute;
     top:2%;
     right:2%;
 }
-.button_large {
+.exit_large {
     font-size: 50px;
     color: white;
 }
