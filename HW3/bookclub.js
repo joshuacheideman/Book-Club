@@ -79,17 +79,27 @@ function handleResponse(bookListObj) {
 		authorpar.className = "authorpar";
 		var descpar = document.createElement("p");
 		descpar.className = "descpar";
-		
+		var wordblock = document.createElement("div");
+		wordblock.className = "wordblock";
+		var Xsymbol = document.createElement("p");
+		Xsymbol.textContent = '\u24E7';
+		Xsymbol.className = "Xsymbol";
 		descpar.textContent = desc.splice(0,30).join(" ");
 		var thumbnailimg = document.createElement("img");
 		thumbnailimg.src = thumbnail;
 		thumbnailimg.alt= title;
 		thumbnailimg.className = "thumbnailimg";
 		/* ALWAYS AVOID using the innerHTML property */
+		tile.append(thumbnailimg);
+		tile.append(Xsymbol);
 		tile.append(titlepar);
 		tile.append(authorpar);
 		tile.append(descpar);
-		tile.append(thumbnailimg);
+		wordblock.appendChild(Xsymbol);
+		wordblock.appendChild(titlepar);
+		wordblock.appendChild(authorpar);
+		wordblock.appendChild(descpar);
+		tile.append(wordblock);
 		bookDisplay.append(tile);
 	}	
 }
