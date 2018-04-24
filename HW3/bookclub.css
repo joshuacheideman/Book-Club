@@ -58,6 +58,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .green {
@@ -101,17 +102,25 @@ input {
 .Xsymbol {
     text-align: right;
 }
-.arrow_box {
+.button_arrow {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    margin: 30px;
+    cursor: pointer;
+}
+.arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 60px;
     border: 2px solid;
-    padding: 10px 10px 20px 10px;
-    margin: 30px;
     border-radius: 10px;
     color: white;
     height: 20px;
+    padding: 10px 10px 20px 10px;
 }
 #search_row {
     display: flex;
