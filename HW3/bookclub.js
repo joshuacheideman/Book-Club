@@ -68,7 +68,10 @@ function handleResponse(bookListObj) {
 		var desc = book.volumeInfo.description;
 		if(desc !=null)
 			desc_list = desc.split(" ");
-		var thumbnail = book.volumeInfo.imageLinks.thumbnail;
+		var thumbnail = book.volumeInfo
+		if (thumbnail.imageLinks == null || thumbnail.imageLinks.thumbnail==null)
+				thumbnail = null;
+		else thumbnail = thumbnail.imageLinks.thumbnail;
 		var tile = document.createElement("div");
 		tile.className = "tile";
 		tile.id = "tile"+numtiles;
@@ -89,9 +92,12 @@ function handleResponse(bookListObj) {
 		if(desc!=null)
 			descpar.textContent = desc_list.splice(0,30).join(" ");
 		var thumbnailimg = document.createElement("img");
-		thumbnailimg.src = thumbnail;
+		if(thumbnail==null)
+			thumbnailimg.src = "file://null";
+		else
+			thumbnailimg.src = thumbnail;
 		thumbnailimg.alt= title;
-		if(thumbnailimg.src == null)
+		if(thumbnail == null)
 			thumbnailimg.alt = "no image";
 		thumbnailimg.className = "thumbnailimg";
 		/* ALWAYS AVOID using the innerHTML property */
