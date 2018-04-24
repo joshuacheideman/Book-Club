@@ -122,6 +122,15 @@ input {
     height: 20px;
     padding: 10px 10px 20px 10px;
 }
+.top_corner {
+    position:absolute;
+    top:2%;
+    right:2%;
+}
+.button_large {
+    font-size: 50px;
+    color: white;
+}
 #search_row {
     display: flex;
     flex-direction: row;
