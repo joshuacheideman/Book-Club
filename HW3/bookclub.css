@@ -11,7 +11,7 @@ h2 {
     font-weight: 300;
 }
 header {
-    height: 300px;
+    /* height: 300px; */
     background-color: white;
     margin: 0;
     padding: 0;
@@ -21,16 +21,14 @@ main {
 }
 
 input {
-   display: flex;
+    display: flex;
     flex-direction: column;
     flex-basis: 100%;
-    height: 40%;
-    width: 100%;
     border-style: solid;
     border-color: #34A852;
     border-radius: 10px;
-    padding-left: 5%;
-    font-size: 90%;
+    padding: 5%;
+    font-size: 100%;
 }
 ::-webkit-input-placeholder {
     color: lightgrey;
@@ -59,6 +57,13 @@ input {
     justify-content: center;
     cursor: pointer;
 }
+.wordblock {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    margin: 5% 5% 5% 0%;
+    overflow-y: scroll;
+}
 
 .green {
     color: #34A852;
@@ -75,8 +80,6 @@ input {
     font-weight: 700;
     font-size:20px;
     padding-top: 40px;
-    padding-left: 10px;
-    padding-right:10px;
 }
 .tile {
     display: flex;
@@ -87,6 +90,7 @@ input {
     height: 300px;
     margin-top: 4%;
     margin-bottom: 4%;
+    /* overflow-y: scroll; */
 }
 .thumbnailimg {
     height: 250px;
@@ -99,6 +103,7 @@ input {
 }
 .Xsymbol {
     text-align: right;
+    font-size: 175%;
 }
 .button_transparent {
     background-color: Transparent;
@@ -129,11 +134,28 @@ input {
     font-size: 50px;
     color: white;
 }
+.titlepar {
+    font-weight: 700;
+    font-size: 130%;
+    line-height: 105%;
+}
+.authorpar {
+    font-size: 130%;
+    padding-top: 2%;
+    line-height: 105%;
+}
+.descpar {
+    font-size: 110%;
+    line-height: 150%;
+    padding-top: 5%;
+}
+.dots {
+    font-size: 200%;
+}
 #search_row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-left: 10%;
+    justify-content: space-evenly;
 }
 
 #search {
@@ -151,10 +173,7 @@ input {
 
 #subtitle {
     display: flex;
-    margin-top: 8.50%;
-    margin-left: 10%;
     font-size: 170%;
-    margin-bottom: 0.625%;
 }
 #bookDisplay {
     display: flex;
@@ -192,6 +211,7 @@ input {
     height: 300px;
     margin-top: 4%;
     margin-bottom: 4%;
+    /* overflow-y: scroll; */
 }
 #keep_button {
     padding: 5px 0px;
@@ -203,19 +223,25 @@ input {
         display: flex;
         flex-direction: column;
     }
+    .input_title {
+        margin-bottom: 5%;
+        margin-left: 5%;
+        font-size:18px;
+    }
     input {
         width: 80%;
-        min-height: 40px;
      }
     #maintitle {
         display: flex;
         justify-content: center;
-        margin-left: 0;
+        margin: 0;
+        padding: 0;
+        padding-top: 5%;
+        padding-bottom: 10%;
     }
     #subtitle {
-        display: flex;
-        justify-content: center;
-        margin: 0;
+        margin-left: 5%;
+        margin-bottom: 5%;
     }
     .or {
         display: flex;

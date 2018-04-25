@@ -171,14 +171,20 @@ function handleResponse(bookListObj) {
 
 		// Create paragraph for author(s)
 		var authorpar = document.createElement("p");
-		authorpar.textContent = author_string;
+		authorpar.textContent = "by " +author_string;
 		authorpar.className = "authorpar";
 
 		// Create paragraph for description
 		var descpar = document.createElement("p");
+		var span_dots = document.createElement("span");
+		span_dots.className = "dots";
+		span_dots.textContent = " ...";
 		descpar.className = "descpar";
 		if (desc != null)
+			{
 			descpar.textContent = desc_list.splice(0, 30).join(" ");
+			// descpar.textContent += " \u2026";
+			}
 
 		// Create paragraph for Xsymbol
 		var Xsymbol = document.createElement("p");
@@ -205,11 +211,12 @@ function handleResponse(bookListObj) {
 
 		/* ALWAYS AVOID using the innerHTML property */
 		// Assemble wordblock
-		wordblock.appendChild(Xsymbol);
+		wordblock.appendChild(Xsymbol);0
 		wordblock.appendChild(titlepar);
 		wordblock.appendChild(authorpar);
 		if (descpar != null)
 			wordblock.appendChild(descpar);
+		descpar.append(span_dots);
 
 		// Assemble final tile
 		tile.append(thumbnailimg);
