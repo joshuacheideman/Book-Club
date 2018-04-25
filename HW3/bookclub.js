@@ -30,11 +30,81 @@ function newRequest() {
 		}
 		// make a new script element
 		var script = document.createElement('script');
-
 		// build up complicated request URL
 		var beginning = "https://www.googleapis.com/books/v1/volumes?q="
 		var callback = "&callback=handleResponse"
-
+		newRequest.DisplayErrorMessage = function()
+		{
+			var message=document.createElement("span");
+			
+			var booktitle= document.createElement("span");
+			var titlebold = document.createElement("span");
+			titlebold.textContent = title;
+			titlebold.style.fontWeight ="700";
+			
+			var bookauthor = document.createElement("span");
+			var authorbold = document.createElement("span");
+			authorbold.textContent = author;
+			authorbold.style.fontWeight="700";
+			
+			var bookisbn = document.createElement("span");
+			var isbnbold = document.createElement("span");
+			isbnbold.textContent = isbn;
+			isbnbold.style.fontWeight="700";
+			
+			var br = document.createElement("br");
+			var error1 = document.createElement("span");
+			error1.textContent = "Could not be found.";
+			
+			var error2 = document.createElement("span");
+			error2.textContent = "Try another search.";
+			
+			booktitle.textContent = "The book ";
+			booktitle.append(titlebold);
+			bookauthor.textContent = " by ";
+			bookauthor.append(authorbold);
+			bookisbn.textContent = " or ISBN number ";
+			bookisbn.append(isbnbold);
+			
+			message.append(booktitle);
+			message.append(bookauthor);
+			message.append(bookisbn);
+			message.append(br);
+			message.append(br.cloneNode(true));
+			message.append(error1);
+			message.append(br.cloneNode(true));
+			message.append(br.cloneNode(true));
+			message.append(error2);
+			
+			message.id = "error_message";
+			message.style.color = "white";
+			message.style.fontSize = "30px";
+			ShowOverlay();
+			function ShowOverlay()
+			{
+					var overlay_dim = document.getElementById("overlay_dim");
+					overlay_dim.style.display = "flex";
+					createOverlayInfo();
+			}
+			function createOverlayInfo()
+			{
+				var left_arrow = document.getElementById("left_arrow");
+				left_arrow.style.visibility = "hidden";
+				var right_arrow = document.getElementById("right_arrow");
+				right_arrow.style.visibility = "hidden";
+				var exit_large = document.getElementById("exit_large");
+				exit_large.style.visibility = "hidden";
+				overlay_tile.style.backgroundColor= "transparent";
+				if(overlay_tile.childElementCount == 0)
+					overlay_tile.append(message);
+				var keep_button = document.getElementById("keep_button");
+				var keep_button_text = keep_button.childNodes[1];
+				var ok_button_text = document.createElement("p");
+				ok_button_text.textContent = "OK";
+				keep_button.replaceChild(ok_button_text,keep_button_text);
+				keep_button.onclick = closeOverlay;
+			}
+		}
 		script.src = beginning + query + callback
 		script.id = "jsonpCall";
 
@@ -53,11 +123,15 @@ function fancyJoin(a, b) {
 }
 
 var numtiles = 0;
-
 /* The callback function, which gets run when the API returns the result of our query */
 function handleResponse(bookListObj) {
 	var bookList = bookListObj.items;
-
+	if(bookList===undefined)
+	{
+		newRequest.DisplayErrorMessage();
+	}
+	else
+	{
 	/* where to put the data on the Web page */
 	var bookDisplay = document.getElementById("bookDisplay");
 	var tile_list = new Array;
@@ -144,6 +218,7 @@ function handleResponse(bookListObj) {
 	}
 	addButtonActions(tile_list);
 	showOverlay(tile_list);
+	}
 }
 function addOnClick(element, func, param) {
 	function noarg() {
@@ -190,17 +265,32 @@ function showOverlay(tile_list)
 function createOverlayInfo(tile_list)
 {
 	var left_arrow = document.getElementById("left_arrow");
+	var right_arrow = document.getElementById("right_arrow");
 	var overlay_tile = document.getElementById("overlay_tile");
+	var exit_large = document.getElementById("exit_large");
+	exit_large.style.visibility = "visible";
+	overlay_tile.style.backgroundColor= "white";
+	if(overlay_tile.childElementCount == 0)
 	overlay_tile.append(tile_list[0]);
 	left_arrow.style.visibility = "hidden";
+	right_arrow.style.visibility = "visible";
 	var Xsymbol = tile_list[0].getElementsByClassName("Xsymbol");
 	Xsymbol[0].style.visibility = "hidden";
+	var ok_button = document.getElementById("keep_button");
+	var ok_button_text = keep_button.childNodes[1];
+	var keep_button_text = document.createElement("p");
+	keep_button_text.textContent = "Keep";
+	ok_button.replaceChild(keep_button_text,ok_button_text);
+	
+	
 }
 
 function closeOverlay()
 {
 	var overlay_dim = document.getElementById("overlay_dim");
 	overlay_dim.style.display = "none";
+	var overlay_tile = document.getElementById("overlay_tile");
+	overlay_tile.removeChild(overlay_tile.childNodes[1]);
 }
 function goRight(tile)
 {
