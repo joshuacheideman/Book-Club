@@ -60,6 +60,7 @@ function handleResponse(bookListObj) {
 
 	/* where to put the data on the Web page */
 	var bookDisplay = document.getElementById("bookDisplay");
+	var tile_list = new Array;
 	/* write each title as a new paragraph */
 	for (i = 0; i < bookList.length; i++) {
 		var book = bookList[i];
@@ -139,10 +140,10 @@ function handleResponse(bookListObj) {
 		// Assemble final tile
 		tile.append(thumbnailimg);
 		tile.append(wordblock);
-		bookDisplay.append(tile);
+		tile_list.push(tile);
 	}
-	addButtonActions();
-	showOverlay();
+	addButtonActions(tile_list);
+	showOverlay(tile_list);
 }
 function addOnClick(element, func, param) {
 	function noarg() {
@@ -151,14 +152,27 @@ function addOnClick(element, func, param) {
 	element.onclick = noarg;
 }
 
-function addButtonActions() {
-	var tile_list = document.getElementsByClassName("tile");
+function addButtonActions(tile_list) {
+	var left_arrow = document.getElementById("left_arrow");
+	var right_arrow = document.getElementById("right_arrow");
+	
+	
 	for (let i = 0; i < tile_list.length; i++) {
 		var our_tile = tile_list[i];
-		var X_button = our_tile.getElementsByClassName("Xsymbol");
-		var tile_ID = our_tile.id;
-		addOnClick(X_button[0], removeElement, tile_ID);
+			if(i==0)
+				tile_list[i].prev = null
+			else tile_list[i].prev = tile_list[i-1];
+			if(i==tile_list[i].length)
+				tile_list[i].next = null;
+			else tile_list[i].next = tile_list[i+1];
+		if(i>=0 && i<tile_list.length-1)
+			addOnClick(right_arrow,goRight,null);
+		if(i>0 && i<tile_list.length)
+			
+			addOnClick(left_arrow,goLeft,null);
 	}
+	var keep_button = document.getElementById("keep_button");
+	addOnClick(keep_button,Keep,null);
 }
 
 function removeElement(tile) {
@@ -167,22 +181,77 @@ function removeElement(tile) {
 	bookDisplay.removeChild(tile_div);
 }
 
-function showOverlay()
+function showOverlay(tile_list)
 {
 	var overlay_dim = document.getElementById("overlay_dim");
 	overlay_dim.style.display = "flex";
-	createOverlayInfo();
+	createOverlayInfo(tile_list);
 }
-
-function createOverlayInfo()
+function createOverlayInfo(tile_list)
 {
-	var tile_list = document.getElementsByClassName("tile");
+	var left_arrow = document.getElementById("left_arrow");
 	var overlay_tile = document.getElementById("overlay_tile");
-	overlay_tile.parentNode.replaceChild(tile_list[0], overlay_tile);
+	overlay_tile.append(tile_list[0]);
+	left_arrow.style.visibility = "hidden";
+	var Xsymbol = tile_list[0].getElementsByClassName("Xsymbol");
+	Xsymbol[0].style.visibility = "hidden";
 }
 
 function closeOverlay()
 {
 	var overlay_dim = document.getElementById("overlay_dim");
 	overlay_dim.style.display = "none";
+}
+function goRight(tile)
+{
+	var overlay_tile = document.getElementById("overlay_tile");
+	var current_tile = overlay_tile.lastChild;
+	var next_tile = current_tile.next;
+	next_tile.style.display = "flex";
+	overlay_tile.replaceChild(next_tile,current_tile);
+	var Xsymbol = next_tile.getElementsByClassName("Xsymbol");
+	Xsymbol[0].style.visibility = "hidden";
+	var left_arrow = document.getElementById("left_arrow");
+	if(next_tile.prev)
+		left_arrow.style.visibility = "visible";
+	if(next_tile.prev== null)
+		left_arrow.style.visibility = "hidden";
+	if(next_tile.next!=null)
+		right_arrow.style.visibility = "visible";
+	if(next_tile.next==null)
+		right_arrow.style.visibility = "hidden";
+}
+var tile_num=0;
+function Keep(tile)
+{
+	current_tile = overlay_tile.lastChild;
+	var bookDisplay = document.getElementById("bookDisplay");
+	var duplicated_tile = current_tile.cloneNode(true);
+	duplicated_tile.id = "tile"+tile_num;
+	tile_num++;
+	bookDisplay.append(duplicated_tile);
+	var X_button = duplicated_tile.getElementsByClassName("Xsymbol");
+	X_button[0].style.visibility = "visible";
+	var tile_ID = duplicated_tile.id;
+	addOnClick(X_button[0], removeElement, tile_ID);
+}
+function goLeft(tile)
+{
+	var overlay_tile = document.getElementById("overlay_tile");
+	var current_tile = overlay_tile.lastChild;
+	var prev_tile = current_tile.prev;
+	overlay_tile.replaceChild(prev_tile,current_tile);
+	var Xsymbol = prev_tile.getElementsByClassName("Xsymbol");
+	Xsymbol[0].style.visibility = "hidden";
+	var right_arrow = document.getElementById("right_arrow");
+	if(prev_tile.prev)
+		left_arrow.style.visibility = "visible";
+	if(prev_tile.prev==null)
+		left_arrow.style.visibility = "hidden";
+	if(prev_tile.next=== undefined)
+		right_arrow.style.visibility = "hidden";
+	if(prev_tile.next!==undefined)
+	{
+		right_arrow.style.visibility = "visible";
+	}
 }
