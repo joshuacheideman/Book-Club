@@ -141,6 +141,7 @@ function handleResponse(bookListObj) {
 		tile.append(wordblock);
 		bookDisplay.append(tile);
 	}
+	showOverlay();
 	addButtonActions();
 }
 function addOnClick(element, func, param) {
@@ -164,4 +165,16 @@ function removeElement(tile) {
 	var tile_div = document.getElementById(tile);
 	var bookDisplay = document.getElementById("bookDisplay");
 	bookDisplay.removeChild(tile_div);
+}
+
+function showOverlay()
+{
+	var overlay_dim = document.getElementById("overlay_dim");
+	overlay_dim.style.display = "flex";
+}
+
+function closeOverlay()
+{
+	var overlay_dim = document.getElementById("overlay_dim");
+	overlay_dim.style.display = "none";
 }
