@@ -357,23 +357,24 @@ function collapseSearch()
 {
 	document.getElementById("subtitle").style.display = "none";
 	document.getElementsByTagName("header")[0].style.display = "flex";
+	document.getElementsByTagName("header")[0].style.flexDirection = "row";
 	document.getElementsByTagName("header")[0].style.alignItems  ="center";
 	document.getElementById("search_all").style.display = "flex";
 	document.getElementById("search_all").style.justifyContent = "space-evenly";
 	if(window.matchMedia("(max-width:920px)").matches)
 	{
 		document.getElementById("search_all").style.display = "none";
-		var magnify = document.getElementById("magnify").style.display="initial";
+		var magnify = document.getElementById("magnify").style.display="flex";
 	}
 	else
 	{
 		document.getElementById("search_all").style.display = "flex";
+		var ors = document.getElementsByClassName("or");
 		for(let i=0;i<ors.length;i++)
 		{
 			ors[i].style.display="none";
 		}
 	}
-	var ors = document.getElementsByClassName("or");
 }
 function magnifyclick()
 {
@@ -383,4 +384,12 @@ function magnifyclick()
 	document.getElementsByTagName("header")[0].style.flexDirection = "column";
 	document.getElementById("magnify").style.display = "none";
 	var ors = document.getElementsByClassName("or");
+}
+function CheckMobile()
+{
+	if(!window.matchMedia("(max-width:920px)").matches)
+	{
+		magnifyclick();
+	}
+	console.log("HELLO");
 }
