@@ -10,9 +10,6 @@ h1 {
 h2 {
     font-weight: 300;
 }
-body {
-
-}
 footer {
     display: flex;
     background-color: #EDEDED;
@@ -21,6 +18,7 @@ header {
     background-color: white;
     margin: 0;
     padding: 0;
+    padding-bottom: 3%;
 }
 main {
     background-color: #EDEDED;
@@ -170,13 +168,16 @@ input {
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    padding-left: 10%;
+}
+#magnify{
+    display:none;
 }
 
 #maintitle {
     padding-left: 2.5%;
     font-size: 30px;
     padding-top: 2.5%;
+    white-space: nowrap;
 }
 
 #subtitle {
@@ -223,10 +224,13 @@ input {
     margin: 5px;
 }
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 920px){
     input {
         width: 80%;
      }
+    header{
+        justify-content:center;
+    } 
     .input_title {
         margin-bottom: 5%;
         margin-left: 5%;
@@ -247,8 +251,7 @@ input {
         justify-content: center;
         margin: 0;
         padding: 0;
-        padding-top: 5%;
-        padding-bottom: 10%;
+        padding-top: 3%;
     }
     #subtitle {
         margin-left: 5%;

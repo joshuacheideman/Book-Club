@@ -360,9 +360,27 @@ function collapseSearch()
 	document.getElementsByTagName("header")[0].style.alignItems  ="center";
 	document.getElementById("search_all").style.display = "flex";
 	document.getElementById("search_all").style.justifyContent = "space-evenly";
-	var ors = document.getElementsByClassName("or");
-	for(let i=0;i<ors.length;i++)
+	if(window.matchMedia("(max-width:920px)").matches)
 	{
-		ors[i].style.display="none";
+		document.getElementById("search_all").style.display = "none";
+		var magnify = document.getElementById("magnify").style.display="initial";
 	}
+	else
+	{
+		document.getElementById("search_all").style.display = "flex";
+		for(let i=0;i<ors.length;i++)
+		{
+			ors[i].style.display="none";
+		}
+	}
+	var ors = document.getElementsByClassName("or");
+}
+function magnifyclick()
+{
+	var search_all = document.getElementById("search_all");
+	search_all.style.display="flex";
+	search_all.style.flexDirection="column";
+	document.getElementsByTagName("header")[0].style.flexDirection = "column";
+	document.getElementById("magnify").style.display = "none";
+	var ors = document.getElementsByClassName("or");
 }
