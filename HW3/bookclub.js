@@ -276,7 +276,6 @@ function createOverlayInfo(tile_list)
 	var overlay_tile = document.getElementById("overlay_tile");
 	var exit_large = document.getElementById("exit_large");
 	exit_large.style.visibility = "visible";
-	overlay_tile.style.backgroundColor= "white";
 	if(overlay_tile.childElementCount == 0)
 	overlay_tile.append(tile_list[0]);
 	left_arrow.style.visibility = "hidden";
@@ -330,6 +329,7 @@ function Keep(tile)
 	var X_button = duplicated_tile.getElementsByClassName("Xsymbol");
 	X_button[0].style.visibility = "visible";
 	var tile_ID = duplicated_tile.id;
+	collapseSearch();
 	addOnClick(X_button[0], removeElement, tile_ID);
 }
 function goLeft(tile)
@@ -350,5 +350,19 @@ function goLeft(tile)
 	if(prev_tile.next!==undefined)
 	{
 		right_arrow.style.visibility = "visible";
+	}
+}
+
+function collapseSearch()
+{
+	document.getElementById("subtitle").style.display = "none";
+	document.getElementsByTagName("header")[0].style.display = "flex";
+	document.getElementsByTagName("header")[0].style.alignItems  ="center";
+	document.getElementById("search_all").style.display = "flex";
+	document.getElementById("search_all").style.justifyContent = "space-evenly";
+	var ors = document.getElementsByClassName("or");
+	for(let i=0;i<ors.length;i++)
+	{
+		ors[i].style.display="none";
 	}
 }

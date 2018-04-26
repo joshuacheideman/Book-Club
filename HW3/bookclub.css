@@ -10,8 +10,14 @@ h1 {
 h2 {
     font-weight: 300;
 }
+body {
+
+}
+footer {
+    display: flex;
+    background-color: #EDEDED;
+}
 header {
-    /* height: 300px; */
     background-color: white;
     margin: 0;
     padding: 0;
@@ -90,7 +96,6 @@ input {
     height: 300px;
     margin-top: 4%;
     margin-bottom: 4%;
-    /* overflow-y: scroll; */
 }
 .thumbnailimg {
     height: 250px;
@@ -156,12 +161,15 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    width: 100%;
 }
-
+#search_all {
+    width: 100%;
+}
 #search {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
     padding-left: 10%;
 }
 
@@ -205,32 +213,35 @@ input {
     flex-direction: column;
 }
 #overlay_tile {
-    border-style: solid;
-    background-color: white;
-    width: 500px;
-    height: 300px;
+    width: 62.5%;
+    height: 37.5%;
     margin-top: 4%;
     margin-bottom: 4%;
-    /* overflow-y: scroll; */
 }
 #keep_button {
     padding: 5px 0px;
     margin: 5px;
 }
 
-@media only screen and (max-width: 500px){
-    #search_row {
-        display: flex;
-        flex-direction: column;
-    }
+@media only screen and (max-width: 650px){
+    input {
+        width: 80%;
+     }
     .input_title {
         margin-bottom: 5%;
         margin-left: 5%;
         font-size:18px;
     }
-    input {
-        width: 80%;
-     }
+     .or {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    #search_row {
+        display: flex;
+        flex-direction: column;
+    }
     #maintitle {
         display: flex;
         justify-content: center;
@@ -243,17 +254,18 @@ input {
         margin-left: 5%;
         margin-bottom: 5%;
     }
-    .or {
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
-    }
     #search {
         padding: 0;
         width: 100%;
     }
     .button {
         width: 80%;
+    }
+    #overlay_tile > div {
+        width: 100%;
+    }
+    #overlay_main {
+        display: flex;
+        flex-direction: column;
     }
 }
