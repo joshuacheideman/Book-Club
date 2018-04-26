@@ -372,7 +372,7 @@ function collapseSearch()
 		var ors = document.getElementsByClassName("or");
 		for(let i=0;i<ors.length;i++)
 		{
-			ors[i].style.display="none";
+			ors[i].style.visibility="hidden";
 		}
 	}
 }
@@ -383,13 +383,29 @@ function magnifyclick()
 	search_all.style.flexDirection="column";
 	document.getElementsByTagName("header")[0].style.flexDirection = "column";
 	document.getElementById("magnify").style.display = "none";
-	var ors = document.getElementsByClassName("or");
 }
 function CheckMobile()
 {
-	if(!window.matchMedia("(max-width:920px)").matches)
+	if(window.matchMedia("(min-width:920px)").matches)
 	{
-		magnifyclick();
+		var search_all = document.getElementById("search_all");
+		document.getElementById("magnify").style.display = "none";
+		document.getElementsByTagName("header")[0].style.flexDirection = "row";
+		search_all.style.flexDirection="row";
+		search_all.style.display = "flex";
+		var ors = document.getElementsByClassName("or");
+		for(let i=0;i<ors.length;i++)
+		{
+			ors[i].style.visibility="hidden";
+		}
 	}
-	console.log("HELLO");
+	else{
+		document.getElementsByTagName("header")[0].style.flexDirection = "column";
+		document.getElementById("search_all").style.flexDirection="column";
+		var ors = document.getElementsByClassName("or");
+		for(let i=0;i<ors.length;i++)
+		{
+			ors[i].style.visibility="visible";
+		}
+	}
 }

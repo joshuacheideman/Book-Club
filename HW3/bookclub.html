@@ -14,9 +14,9 @@
 	<header>
 		<h1 id="maintitle" class="green"> BOOK CLUB </h1>
 		<!-- Div for search by and search bar-->
-		<button class="button_transparent" onclick="magnifyclick()">
+		<div class="button_transparent" onclick="magnifyclick()">
 			<p id="magnify" class="material-icons green">search</p>
-		</button>
+		</div>
 		<div id="search_all">
 			<h2 id="subtitle"> Search for a book by...</h2>
 			<!-- Div for the search bar -->
@@ -37,8 +37,9 @@
 				</div>
 			</div>
 			<div id="search">
-				<button class="button" onclick="newRequest()"> Search </p>
+				<div class="button" onclick="newRequest()"> <p> Search </p>
 			</div>
+		</div>
 		</div>
 		<!-- div for Search -->
 	</header>
@@ -47,21 +48,21 @@
 		</div>
 		<div id="overlay_dim">
 			<div id="overlay_main">
-				<button class="button_transparent">
+				<div class="button_transparent">
 					<p class="arrow" id="left_arrow">&larr;</p>
-				</button>
+				</div>
 				<div id="overlay_tile">
 				</div>
-				<button class="button_transparent">
+				<div class="button_transparent">
 					<p class="arrow" id="right_arrow">&rarr;</p>
-				</button>
+				</div>
 			</div>
-			<button class="button" id="keep_button">
+			<div class="button" id="keep_button">
 				<p>Keep</p>
-			</button>
-			<button class="button_transparent top_corner exit_large" id="exit_large" onclick="closeOverlay()">
+			</div>
+			<div class="button_transparent top_corner exit_large" id="exit_large" onclick="closeOverlay()">
 				<p>&#9447;</p>
-			</button>
+			</div>
 		</div>
 	</main>
 	<footer>

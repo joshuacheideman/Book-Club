@@ -34,12 +34,6 @@ input {
     padding: 5%;
     font-size: 100%;
 }
-::-webkit-input-placeholder {
-    color: lightgrey;
-}
-::-moz-placeholder{
-    color: lightgrey;
-}
 
 .input_title {
     color: #34A852;
@@ -107,6 +101,7 @@ input {
 .Xsymbol {
     text-align: right;
     font-size: 175%;
+    cursor: pointer;
 }
 .button_transparent {
     background-color: Transparent;
